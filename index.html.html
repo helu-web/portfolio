@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <style>
+    :root {
+      --primary: #7c3aed;
+      --secondary: #ec4899;
+      --dark: #111827;
+      --gray: #6b7280;
+      --light: #f3f4f6;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, var(--dark), #1f2937);
+      color: white;
+      line-height: 1.6;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(17, 24, 39, 0.95);
+      padding: 1rem 2rem;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 1.8rem;
+    }
+
+    nav a {
+      margin-left: 2rem;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      padding-top: 8rem;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 2rem 4rem;
+      flex-direction: column-reverse;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+
+    .hero-text {
+      max-width: 600px;
+    }
+
+    .hero-text h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+      margin-bottom: 2rem;
+      color: #d1d5db;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      padding: 0.75rem 1.5rem;
+      color: white;
+      border-radius: 9999px;
+      font-weight: 600;
+      text-decoration: none;
+      margin-right: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .profile-img {
+      margin-top: -9rem;
+    }
+
+    .profile-img img {
+      width: 270px;
+      height: 270px;
+      object-fit: cover;
+      border-radius: 9999px;
+      border: 4px solid var(--primary);
+      box-shadow: 0 0 10ap rgba(124, 58, 237, 0.5);
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      font-weight: 700;
+    }
+
+    .about {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 1rem;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .about-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .about-grid {
+        flex-direction: row;
+      }
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 0.5rem;
+      object-fit: cover;
+    }
+
+    .skills ul {
+      list-style: none;
+    }
+.skills li::before {
+      content: "•";
+      color: var(--primary);
+      margin-right: 0.5rem;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .project-card .content {
+      padding: 1rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      background: #1f2937;
+      color: white;
+    }
+
+    .contact-form button {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 9999px;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform 0.3s ease;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #0b0f19;
+      color: #9ca3af;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .hero-text h2 {
+        font-size: 1.8rem;
+      }
+
+      .btn {
+        display: block;
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <header>
+    <h1>My<span style="color: white;">Portfolio</span></h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="#Address">Address</a>
+
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Web designer and developer</h2>
+      <p>I'm a creating beautiful, functional websites that work seamlessly across all devices.</p>
+      <a href="#projects" class="btn">View My Work</a>
+      <a href="#contact" class="btn">Contact Me</a>
+    </div>
+    <div class="profile-img">
+      <img src="main.jpg"  data-aos="zoom-out" data-aos-duration="2000" > 
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about">
+      <div class="about-grid">
+        <div class= <p> Hi! I Am Helina Web designer and developer from Addis Ababa, Ethiopia.</p>
+          <p>I create websites to help businesses do better online</p>
+          <div class="skills">
+          <img src="https://picsum.photos/600/400?random=2" alt="About me">
+        </div>
+        <div class="about-content">
+          <p>
+            <h3>Skills</h3>
+            <ul>
+              <li>HTML & CSS</li>
+              <li>JavaScript (ES6+)</li>
+              <li>Responsive Design</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>Featured Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <img src="images (29).jpg" alt="Project 1">
+        <div class="content">
+          <h3>online Asebeza</h3>
+          <p>Super Market</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images (39).jpg" alt="Project 2">
+        <div class="content">
+          <h3> Delivery </h>
+<p>Arrival of different items</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images.jpg" alt="Project 3">
+        <div class="content">
+          <h3>Clothing shop</h3>
+          <p></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+  
+  <!-- Address Section -->
+   <section id="Address">
+    <Address> Address </Address>
+    <h3> +251966872179 </h3>
+   </h2> muluhelina12@gmail.com</h2>
+    </section>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Helina mulu. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
